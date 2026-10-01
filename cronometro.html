@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cronometro</title>
+</head>
+<body>
+
+   <p id="cronometro"> <span id="minutos">00</span> <span>:</span> <span id="segundos">00</span></p>
+
+   <button id="iniciar">Iniciar</button>
+   <button id="pausar">Pausar</button>
+   <button id="reiniciar">Reiniciar</button>
+<script>
+
+var minutosTexto = document.getElementById("minutos");
+var segundosTexto = document.getElementById("segundos");
+let btonIniciar = document.getElementById("iniciar");
+let btonPausar = document.getElementById("pausar");
+let btonReiniciar = document.getElementById("reiniciar");
+
+
+let hoy = new Date();
+let min = hoy.getMinutes();
+let seg = hoy.getSeconds();
+ 
+
+
+let segundos = 0;
+let intervalo; 
+btonIniciar.addEventListener("click",()=> {intervalo =setInterval(() => {
+  segundos++;
+  segundosTexto.innerHTML= segundos;
+}, 1000);});
+
+btonPausar.addEventListener("click", ()=> clearInterval(intervalo));
+
+btonReiniciar.addEventListener("click", () => {
+
+    clearInterval(intervalo);
+
+    segundos = 0;
+    segundosTexto.innerHTML = "00";
+
+});
+
+
+
+</script>
+</body>
+</html>

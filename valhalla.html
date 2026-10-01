@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>VALHALLA</title>
+</head>
+<body>
+
+<script>
+
+let arr = ["C","U","S","R","U"];
+
+function valhalla(a){
+
+   
+    const VALORES = {
+        "U": 1,
+        "S": 7,
+        "D": 10,
+        "C": 50,
+        "X": 100
+    };
+    
+
+    
+    let simbolos = [];
+    for (let i = 0; i < a.length; i++) {
+        let s = a[i];
+        if (s === "R" || VALORES[s] !== undefined) {
+            simbolos.push(s);
+        }
+    }
+
+    
+    let total = 0;
+    let i = 0;
+
+    while (i < simbolos.length) {
+
+        if (simbolos[i] === "R") {
+
+            
+            let cuantasR = 0;
+            while (i < simbolos.length && simbolos[i] === "R") {
+                cuantasR++;
+                i++;
+            }
+
+            
+            if (i < simbolos.length) {
+                let valor = VALORES[simbolos[i]];
+
+                
+                let multiplicador = Math.pow(2, cuantasR - 1);
+
+                total = total - (valor * multiplicador);
+                i++;
+            }
+
+        } else {
+           
+            total = total + VALORES[simbolos[i]];
+            i++;
+        }
+    }
+
+    return total;
+}
+
+console.log(valhalla(arr));                              // 57
+
+
+
+</script>
+</body>
+</html>

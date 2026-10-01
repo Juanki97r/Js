@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejemplo de Texto</title>
+</head>
+<body>
+  <label for="mensaje">Escribe tu mensaje:</label><br>
+  <textarea id="mensaje" rows="5" cols="40"></textarea>
+  <p id="contador">Caracteres restantes: 150</p>
+
+
+  <script>
+  const MAX_CARACTERES = 150;
+  var textarea = document.getElementById('mensaje');
+  var contador = document.getElementById('contador');
+
+  function descontar(){
+    var caracteresEscritos = textarea.value.length;
+    var caracteresRestantes = MAX_CARACTERES-caracteresEscritos;
+    contador.textContent = "Caracteres restantes: " + caracteresRestantes;
+  }
+
+  textarea.addEventListener('input',descontar);
+
+  
+  
+
+</script>
+</body>
+
+</html>

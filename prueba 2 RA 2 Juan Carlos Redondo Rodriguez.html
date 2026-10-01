@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador de IDs aleatorios</title>
+</head>
+<body>
+  <p id="identificadores">Coloca aquí los identificadores</p>
+<button id="boton" type="button">Este es el botón de generar los identificadores</button>
+
+<script>
+
+const boton = document.getElementById('boton');
+
+const identificador = document.getElementById('identificadores');
+
+boton.addEventListener('click', function(){
+  const hoy = new Date();
+  let dia = hoy.getDate().toString().padStart(2,'0');
+  let mes = (hoy.getMonth()+1).toString().padStart(2,'0');
+  let anio = hoy.getFullYear().toString().padStart(4,'0');
+  
+
+
+  
+   //saldra un id por cada vez que le des al boton
+  let numAleatorio = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+   let nuevoID = "REG-" + dia + "/" + mes + "/" + anio + "-" + numAleatorio;
+
+   let elemento = document.createElement('p');
+    elemento.textContent = nuevoID;
+
+    identificador.appendChild(elemento);
+ 
+ // o un bucle for para que salgan todos a la vez
+
+})
+
+
+
+</script>
+</body>
+</html>
