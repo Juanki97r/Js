@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Log</title>
+</head>
+<body>
+    <h1>Registro de Log con marca de tiempo</h1>
+
+    <p id="mensajeError"></p>
+
+    <script>
+        
+        let mensaje = "Error de inicio de sesión"
+        let mensaje_error = (string)=>{
+
+            let fecha = new Date();
+            let horas=fecha.getHours().toString().padStart(2,0);
+            let minutos =fecha.getMinutes().toString().padStart(2,0);
+            let segundos = fecha.getSeconds().toString().padStart(2,0);
+
+            return "["+horas+":"+minutos+":"+segundos+"]"+string;
+        }
+
+        document.getElementById("mensajeError").innerHTML= mensaje_error(mensaje);
+
+
+    </script>
+</body>
+</html>

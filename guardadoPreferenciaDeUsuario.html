@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preferencia de tema</title>
+</head>
+
+<body>
+
+    <h1>Preferencia de tema visual</h1>
+
+    <label for="tema">Elige tu tema:</label>
+
+    <select id="tema">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+    
+    <div id="mensaje">
+
+    </div>
+    <br><br>
+
+    <button id="guardar">Guardar tema</button>
+    <button id="recuperar">Recuperar tema</button>
+
+    
+    <script>
+    
+    
+    let btonGuardar= document.getElementById("guardar");
+    let btonRecuperar = document.getElementById("recuperar");
+
+    btonGuardar.addEventListener("click", ()=>{ 
+
+        let temaElegido = document.querySelector("#tema").value;
+        localStorage.setItem("tema",temaElegido);
+
+        console.log("Tema guardado con exito")
+
+    })
+
+    btonRecuperar.addEventListener("click",()=>{
+
+       let m = document.createElement("p")
+
+       m.textContent = "Se ha seleccionado el tema: "+ localStorage.getItem("tema");
+
+       document.getElementById("mensaje").appendChild(m);
+    })
+
+    </script>
+</body>
+</html>

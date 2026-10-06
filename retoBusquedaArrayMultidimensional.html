@@ -1,0 +1,15 @@
+<html>
+<head>
+<title>Sumatorio de un array</title>
+</head>
+<body>
+<h1>Encuentra cuantas veces aparece un número en un array multidimensional</h1>
+<script>
+let numeros = [1,[2,3,4],[8,15,[5,1]],27];
+
+ let numero1= (array,num) => array.flat(Infinity).filter(numero=>numero===num).length;
+ console.log(numero1(numeros,1));
+
+</script>
+</body>
+</html>

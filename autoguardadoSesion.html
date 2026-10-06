@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autoguardado</title>
+</head>
+<body>
+    <h1>Aqui abajo se irá actualizando el mensaje con lo autoguardado</h1>
+
+    <p id="mensaje"><strong>Escribe en la caja y comprueba si voy cambiando:</strong></p>
+
+    <textarea id="editor"></textarea>
+
+
+
+    <script>
+let area_prueba=document.getElementById("editor");
+
+let contador = 0;
+ 
+
+setInterval(()=>{
+
+    
+    let mensaje = area_prueba.value;
+sessionStorage.setItem("borrador",mensaje);
+   
+
+    document.getElementById("mensaje").textContent= sessionStorage.getItem("borrador");
+},5000)
+
+
+    </script>
+</body>
+</html>

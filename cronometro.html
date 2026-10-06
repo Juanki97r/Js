@@ -5,46 +5,59 @@
 </head>
 <body>
 
-   <p id="cronometro"> <span id="minutos">00</span> <span>:</span> <span id="segundos">00</span></p>
+   <p id="cronometro"><span id="minutos">00</span>:<span id="segundos">00</span></p>
 
    <button id="iniciar">Iniciar</button>
    <button id="pausar">Pausar</button>
    <button id="reiniciar">Reiniciar</button>
+
 <script>
+const minutosTexto = document.getElementById("minutos");
+const segundosTexto = document.getElementById("segundos");
+const btonIniciar = document.getElementById("iniciar");
+const btonPausar = document.getElementById("pausar");
+const btonReiniciar = document.getElementById("reiniciar");
 
-var minutosTexto = document.getElementById("minutos");
-var segundosTexto = document.getElementById("segundos");
-let btonIniciar = document.getElementById("iniciar");
-let btonPausar = document.getElementById("pausar");
-let btonReiniciar = document.getElementById("reiniciar");
-
-
-let hoy = new Date();
-let min = hoy.getMinutes();
-let seg = hoy.getSeconds();
- 
-
-
+let minutos = 0;
 let segundos = 0;
-let intervalo; 
-btonIniciar.addEventListener("click",()=> {intervalo =setInterval(() => {
-  segundos++;
-  segundosTexto.innerHTML= segundos;
-}, 1000);});
+let intervalo = null;
 
-btonPausar.addEventListener("click", ()=> clearInterval(intervalo));
+function formatear(numero) {
+  return String(numero).padStart(2, "0");
+}
 
-btonReiniciar.addEventListener("click", () => {
+function actualizarPantalla() {
+  minutosTexto.textContent = formatear(minutos);
+  segundosTexto.textContent = formatear(segundos);
+}
 
-    clearInterval(intervalo);
+btonIniciar.addEventListener("click", () => {
+  if (intervalo !== null) return; // ya está en marcha
 
-    segundos = 0;
-    segundosTexto.innerHTML = "00";
+  intervalo = setInterval(() => {
+    segundos++;
 
+    if (segundos === 60) {
+      segundos = 0;
+      minutos++;
+    }
+
+    actualizarPantalla();
+  }, 1000);
 });
 
+btonPausar.addEventListener("click", () => {
+  clearInterval(intervalo);
+  intervalo = null;
+});
 
-
+btonReiniciar.addEventListener("click", () => {
+  clearInterval(intervalo);
+  intervalo = null;
+  minutos = 0;
+  segundos = 0;
+  actualizarPantalla();
+});
 </script>
 </body>
 </html>

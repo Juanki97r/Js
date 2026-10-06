@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="mensaje">transformame en mayuscula en 5 segundos</p>
+
+    <button id="btonTransformar">Transformar</button>
+
+
+
+    <script>
+
+        let mensaje = document.getElementById("mensaje");
+        let boton = document.getElementById("btonTransformar");
+        let segundos = 5;
+
+        let funcionTransformar = (texto,tiempo)=> texto.textContent = texto.textContent.toUpperCase(); ;
+        
+        boton.addEventListener("click", ()=> {setTimeout(()=>(funcionTransformar(mensaje,segundos)),segundos*1000)});
+    </script>
+</body>
+</html>
